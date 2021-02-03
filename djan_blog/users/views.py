@@ -14,3 +14,10 @@ def register_views(request):
            form = UserRgistrationFrom()      
     return render(request, 'users/register.html', {'form': form})
 
+
+def logo_views(request):
+    messages.success(request, f'You have log out {username}!')
+    return render(request, 'users/register.html', {'form': form})
+
+def about_views(request):   
+    return render(r'users/about.html')

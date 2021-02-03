@@ -11,7 +11,7 @@
           <a class="nav-link active" aria-current="page" href="{% url 'blog_home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog_about' %}">Link</a>
+          <a class="nav-link" href="{% url 'blog_about' %}">About</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">contact</a>
@@ -19,8 +19,12 @@
       </ul>
         <!-- Navbar Right Side -->
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="#">Login</a>
-          <a class="nav-item nav-link" href="{% url 'register_users' %}">Register</a>
+          {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
+            <a class="nav-item nav-link" href="{% url 'register_users' %}">Register</a>
+          {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+          {% endif %}
         </div>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
